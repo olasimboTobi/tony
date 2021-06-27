@@ -1,40 +1,46 @@
-input_1 = input("number1 : ")
+
+gussing_num = input("Enter two digit number: ")
 
 
-# try:
-    # if len(input_1)== 2:
-    #     input_2 = list(input_1)
-    #     print(input_2)
-    #     input_3 = int(input_2[0]) + int(input_2[1])
-    #     print(f"Total: {input_3}")    
-if len(input_1) < 2:
-    input_1 = input("Please input two digit: ")
+def guess_number(gussing_num):
+    while (len(gussing_num) != 2) and (gussing_num.isalpha()):
+        gussing_num = input("Please input two digit: ")
+        guess_number(gussing_num)
 
-elif len(input_1) > 2:
-    input_1 = input("Please input two digit: ")
+    try:
 
-elif input_1.isalpha():
-    input_1 = input("Please input two digit: ")
+        input_2 = list(gussing_num)
+        if (len(input_2) != 2):
+            gussing_num = input("Please input two digit: ")
+            guess_number(gussing_num)
+        else: 
+            print(input_2) 
 
-# else:
-#     # len(input_1)== 2:
-input_2 = list(input_1)
-print(input_2)
-input_3 = int(input_2[0]) + int(input_2[1])
-if input_3 in range(1,10):
-    print("You win!!! Your number input gave a result of one digit number")
-else:
-    print("Try Again !!!")
-    input_1 = input("Please input two digit: ")
+    except ValueError:
+        gussing_num = input("Please input two digit: ")
+        guess_number(gussing_num)
+    input_3 = int(input_2[0]) + int(input_2[1])
+    if input_3 in range(1,10):
+        print("You win!!! Your number input gave a result of one digit number")
+        gussing_num = input("Would you play again? yes or no : ")
+        if gussing_num == "yes":
+            gussing_num = input("Please input two digit: ")
+            guess_number(gussing_num)
 
-# except ValueError:
-#         input_1 = input("Please input two digit: ")
+        else:
+            print("Thanks for playing")
+        
+            
+    else:
+        print("Try Again !!!")
+        gussing_num = input("Please input two digit: ")
+        guess_number(gussing_num)
 
-# """for i in range(0,10):
-#     result = i
-#     print(f"{result}")"""
+    return str(input_3)
+
+
+result = guess_number(gussing_num)
 
     
    
-
 

@@ -1,6 +1,6 @@
 from getpass import getpass
-from datetime import datetime
 
+#Password Confirmation
 user_password1 = getpass('Enter password : ')
 def get_password(pwd):
     user_pwd = list(pwd)
@@ -21,6 +21,7 @@ def get_password(pwd):
 
 user_password = get_password(user_password1)
 
+#Expired Date Validation
 current_date= int(input("Enter Issued Card Year: "))
 card_expired_date = int(input("Enter Expired Date: "))
 try:
@@ -34,7 +35,7 @@ try:
 except:
     exit()
 
-
+#Card Type Identification
 user_card_type = getpass("Enter Issue Identification Number: ")
 def get_card_type(card_type1):
     try:
@@ -62,9 +63,13 @@ def get_card_type(card_type1):
 
 card_number = get_card_type(user_card_type)
 
+
+#Input the Name of the Bank
 bank_name = input("Enter Bank Name: ")
 
 
+
+#Implimentation of Atmcard
 
 class Atmcard:
     def __init__(self, name, customer, password, card_type ):
@@ -106,10 +111,12 @@ class Atmcard:
         else:
             self.option()
 
+    
     def show_balance(self):
         print(f"{self.customer_name} has {self.balance} Naira ")
 
 
+    
     def withdraw_money(self, amount):
         if (amount > self.balance):
             print("You don't have sufficient funds in your account")
@@ -117,6 +124,7 @@ class Atmcard:
             self.balance -= amount
             print(f"{self.customer_name} has withdraw #{amount} and your balance is {self.balance} Naira")
 
+    
     def deposit_money(self, amount):
         self.balance += amount
         print(f"{self.customer_name} has deposited #{amount} and the total balance is {self.balance} Naira ")
@@ -124,7 +132,6 @@ class Atmcard:
 
     
     def quit_transaction(self):
-        #print('Thank you for banking with us.')
         input_1 = input("Would you like to perform another transaction? yes or no : ")
         if input_1 == "yes":
             self.ask_password()
@@ -134,10 +141,7 @@ class Atmcard:
             exit()
         
         
-
-
-
-
+#Instantiation of Atmcard
 
 def main():
     user_1 = Atmcard(bank_name, 'Ojo',user_password,card_number)
