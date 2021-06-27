@@ -112,7 +112,7 @@ class Atmcard:
             self.option()
 
     
-    def show_balance(self):
+    def show_clearbalance(self):
         print(f"{self.customer_name} has {self.balance} Naira ")
 
 
