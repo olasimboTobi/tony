@@ -2,20 +2,23 @@ from getpass import getpass
 
 #Password Confirmation
 user_password1 = getpass('Enter password : ')
+print(len(user_password1) * '#')
 def get_password(pwd):
     user_pwd = list(pwd)
-    print(f"{user_pwd}")
+    # print(f"{user_pwd}")
     try:
         if len(user_pwd) == 4:
             return " ".join(user_pwd)
         else:
             print("Please wrong password. Enter a password that is exactly 4 digit")
             user_password1 = getpass('Enter password : ')
+            print(len(user_password1) * '#')
             get_password(pwd)
 
     except ValueError:
         print("Please,look wrong password. Enter a password that is exactly 4 digit")
         user_password1 = getpass('Enter password : ')
+        print(len(user_password1) * '#')
         get_password(pwd)
         
 
@@ -37,6 +40,7 @@ except:
 
 #Card Type Identification
 user_card_type = getpass("Enter Issue Identification Number: ")
+print(len(user_card_type) * '#')
 def get_card_type(card_type1):
     try:
         if card_type1.startswith('4'):
@@ -54,10 +58,12 @@ def get_card_type(card_type1):
         else:
             print(f"Issue Identification number not complete")
             user_card_type = getpass("Enter Issue Identification Number: ")
+            print(len(user_card_type) * '#')
             get_card_type(card_type1)
     except RecursionError:
         print(f"Issue Identification number not complete1")
         user_card_type = getpass("Enter Issue Identification Number: ")
+        print(len(user_card_type) * '#')
         get_card_type(card_type1)
         
 
@@ -112,7 +118,7 @@ class Atmcard:
             self.option()
 
     
-    def show_clearbalance(self):
+    def show_balance(self):
         print(f"{self.customer_name} has {self.balance} Naira ")
 
 
