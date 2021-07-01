@@ -1,0 +1,60 @@
+SERVER SCRIPT
+
+Server program has all the logic to control and regulate the Chat, so most of the chat logic is implemented 
+with a server program. So first step of communication is to identify the 
+users, how server do this? In network communication, users are identified by a socket which
+ is nothing but a combination of IP address and port address. So, for human understanding, 
+ Alice and Bob will be chatting but for a network, it is two sockets process which is sending and receiving bytes.  
+ Steps involved in this process is as follows:
+
+Create socket
+Communicate the socket address
+Keep waiting for an incoming connection request/s
+Connect to client
+Receive the message
+Decode the destination user and select the socket
+Send a message to the intended client
+Keep repeating step 5 & 6 as per users wish
+Exit i.e. end the communication by terminating the connection
+
+
+Client script
+
+Client script is run by the user, so the same client code will be run by a different user but each will have a 
+separate socket so they will have their unique communication channel. Client script uses 
+to be thin because it has very less work i.e. it only connect with the server and send and
+receive messages. The steps involved in client script are:
+
+
+Create a unique client socket per instance/user
+Connect to the server with given socket address (IP and port)
+Send and receive messages
+Repeat step 3 as per configuration
+Close the connection
+
+In the above program, each user has to run the client script separately after the server script is 
+running. Once the client program connects to the server the client has to register itself as a user 
+by giving a username, so the rest of the communication will be done using the username.
+
+
+Steps for running the sample Chat application:
+
+1. Open a terminal and Run the server-chat.py
+
+2. Open a new terminal and run client-chat.py
+
+            a) Enter the username with a ‘#’ prefix. Example: #alice
+
+            b) Now, send the message to a user by following the format @username:message. Example: @bob:Hello, Bob! This is alice
+
+3. Repeat step 2 for other users. (Maximum 5 users is allowed with server configuration i.e. server_socket.listen(
+
+
+Limitations:
+
+This demo on Python Chat Application has limited capabilities like the user get the message only after both parties enter the message to each other. Proper user validation etc. is not done.
+
+To Do:
+
+Test a simple cryptography feature.
+Add proper Authentication of the user.
